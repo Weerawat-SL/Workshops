@@ -35,19 +35,19 @@ setup.read("config.ini")
 
 #import var from config file (get,getfloat,getint)
 class Config:
-  MYSQL_HOST = 'ws-project.cuhw5k8lasro.ap-southeast-1.rds.amazonaws.com'
-  MYSQL_PORT = int('3306')
-  MYSQL_USER = 'admin'
-  MYSQL_PASSWORD = 'Wrw12345'
-  MYSQL_DBname = 'BinancePJ'
-  MYSQL_CHARSET = 'utf8mb4'
+  MYSQL_HOST = setup.get("Database_Config","HOST")
+  MYSQL_PORT = setup.getint("Database_Config","PORT")
+  MYSQL_USER = setup.get("Database_Config","USER")
+  MYSQL_PASSWORD = setup.get("Database_Config","PASSWORD")
+  MYSQL_DBname = setup.get("Database_Config","DATABASE_NAME")
+  MYSQL_CHARSET = setup.get("Database_Config","CHARSET")
 
-api_key = 'zCK3jGq11gzNzoImMpFTjG6rDM6xtkeMJGLTzAJ35sMNdXBUm4cl46dbfNOPikS5'
-api_secret = 'W70vPYj1qOYdEf7VpKz2hzEpZBm8l4NmYhrnxMVqzy4QMTsEpjb37UZOUr0GObgV'
+api_key = setup.get("Binance_Setup","api_key")
+api_secret = setup.get("Binance_Setup","api_secret")
 
 client = Client(api_key, api_secret)
 
-LineNotify = 'qMqOI2OieXCOncut0BnC5SISZjtcuZLr6lw46jGUpCF'
+LineNotify = setup.get("Notify","LineNotify")
 
 url = 'https://notify-api.line.me/api/notify'
 token = LineNotify
